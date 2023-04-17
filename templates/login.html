@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+    form {
+      text-align:center;
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      width:400px;
+      height:300px;
+      background:#CCCCFF;
+      border-radius:5px;
+
+
+    }
+
+     body{
+     margin:0;
+     padding:0;
+     font-family: montserrat;
+     background:linear-gradient(120deg,#808000,#00FFFF);
+     height:300vh;
+     overflow:hidden;
+       }
+
+</style>
+     <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<form action="login" method="post">
+    {% csrf_token %}
+    <h2>LOGIN </h2>
+    <p>Username</p>
+
+    <input type="text" name="username" placeholder="enter your user name">
+    <i class="bx bx-user"></i>
+    <p>Password</p>
+    <input type="password" name="password" placeholder="enter your password">
+    <p></p>
+    <input type="submit" value="login">
+<br><br>
+
+         <a href="{% url 'regapp:register' %}">Register</a>
+
+
+</form>
+</body>
+</html>

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}College Store{% endblock %}
+
+{% block content %}
+  <h2>College Store</h2>
+
+  <p>
+    <a href="{% url 'new:add' %}">Student Form</a>
+  </p>
+
+  <table border="1">
+    <thead>
+      <tr>
+          <th>Name</th>
+          <th>DOB</th>
+          <th>Age</th>
+          <th>Gender</th>
+          <th>phn number</th>
+          <th>Mail id</th>
+          <th>Address</th>
+          <th>Department</th>
+          <th>course</th>
+          <th>Purpose</th>
+          <th>Materials</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for form in forms %}
+        <tr>
+            <td><a href="{% url 'new:change' form.pk %}">{{ form.name }}</a></td>
+            <td>{{ form.dob }}</td>
+            <td>{{ form.age }}</td>
+            <td>{{ form.gender }}</td>
+            <td>{{ form.phn }}</td>
+            <td>{{ form.email }}</td>
+            <td>{{ form.address }}</td>
+            <td>{{ form.department }}</td>
+            <td>{{ form.course }}</td>
+            <td>{{form.purpose}}</td>
+            <td>{{ form.debit }}</td>
+            <td>{{ form.note_book }}</td>
+            <td>{{ form.pen }}</td>
+            <td>{{ form.exam_papper }}</td>
+
+            </tr>
+       </tr>
+      {% empty %}
+        <tr>
+          <td colspan="4">No person in the database.<a href="{% url 'new:add' %}">Confirm the first order</a>.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}

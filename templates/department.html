@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadescription %}
+    {{ dept.desc|truncatewords:155}}
+{% endblock %}
+
+{% block title %}
+    {% if dept %}
+        {{dept.name}}-ABC College
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="row my_prod_row_class">
+    <div class="mx_auto">
+        <p><a href="{% url 'store:department' %}">Home</a>| <a href="{{dept.course.get_url}}" >{{dept.course}}</a>|{{dept.name}}</p>
+    </div>
+<div  class="container">
+<br>
+<div class="row">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">
+        <div style="min-width:18rem">
+            <img src="{{dept.img.url}}" alt="{{dept.name}}">
+        </div>
+    </div>
+    <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+        <div>
+            <h1  class="my_prod_title">{{dept.name}}</h1>
+            <p><h4>Fees: {{dept.fees}}</h4></p>
+            <p class="my_title">Department Description</p>
+            <p class="text-justify my_prod_text">{{dept.desc}}</p>
+
+        </div>
+    </div>
+</div>
+</div>
+</div>
+{% endblock %}

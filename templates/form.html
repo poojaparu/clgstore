@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+<h1>Student Form</h1>
+<form method="post" id="StudentForm" data-branches-url="{% url 'newapp:add' %}" novalidate>
+    {% csrf_token %}
+ {{ form.as_table }}<br>
+
+        <button type="submit">Save</button>
+
+      <a href="{% url 'loginapp:logout' %}" class="btn btn-warning">Logout</a><br>
+
+  </form>
+{% for msg in messages %}
+{{msg}}
+{% endfor %}<br>
+ <a href="{% url 'store:department' %}" class="btn btn-primary">Home Page</a><br>
+</div>
+<!--<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>-->
+
+
+{% endblock %}

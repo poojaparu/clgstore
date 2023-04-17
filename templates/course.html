@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadescription %}
+    {% if course %}
+        {{ course.desc|truncatewords:155}}
+    {% else %}
+       Welcome to ABC College
+    {% endif %}
+{% endblock %}
+
+{% block title %}
+    {% if course %}
+        {{course.name}}-ABC College
+    {% else %}
+        see our new courses-ABC College
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    {% if course %}
+    <div>
+       <div class="row my_row_class">
+          <div class="mx-auto">
+            <p><a href="{% url 'store:department' %}">Different Departments of our College</a></p>
+        </div>
+           </div>
+    </div>
+    {% endif %}
+<div class="mx-auto">
+    {% if course %}
+    <img class="my_image" src="{{course.img.url}}" alt="{{course.name}}">
+
+</div>
+<br>
+<div>
+    <h1 class="text-center my_title">{{course.name}}</h1>
+
+</div>
+    {% else %}
+<div>
+<img class="my_image my_image_padding" src="{% static 'img/B.png' %}" alt="departments of our college">
+</div>
+<br>
+<div>
+    <h1 class="text-center my_tittle">About Our College</h1>
+    <p class="text_justify">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
+</div>
+    {% endif %}
+<div class="container" >
+    <div class="row mx_auto">
+        {% for d in dept %}
+        <div class="my_bottom_margin col-9 col-sm-12 col-md-4  col-lg-4">
+            <div class="card text-center" style="min-width:18rem;">
+                <a href="{{d.get_url}}"><img class="card-img-top my_image" src="{{d.img.url}}" alt="{{d.name}}"></a>
+
+            <div class="card-body">
+               <h4>{{d.name}}</h4>
+
+            </div>
+            </div>
+         </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
